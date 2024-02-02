@@ -12,13 +12,12 @@ function Question({ question, onAnswered }) {
 
     // Clean up the timer when the component is unmounted or when timeRemaining hits 0
     return () => {
-      // Call the onAnswered callback with a value of false
-      onAnswered(false);
       clearTimeout(timer);
       if (timeRemaining === 0) {
         // Reset timeRemaining back to 10 seconds
         setTimeRemaining(10);
-        
+        // Call the onAnswered callback with a value of false
+        onAnswered(false);
       }
     };
   }, [timeRemaining, onAnswered]);
